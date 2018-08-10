@@ -25,7 +25,7 @@ namespace li {
 
         Point operator+(const Point &);
 
-        Point operator-(const Point &);
+        Point operator-(const Point &)const;
 
         friend Point operator*(double, const Point &);
 
@@ -85,6 +85,14 @@ namespace li {
 
         //
         WXJ_BOOL isTurningRight(const Point &point);
+
+        // scale x
+        Point &scale_x(double sx);
+
+        Point &scale_y(double sy);
+
+        // scale x, y independently.
+        Point &scaleIndependent(double sx, double sy);
 
 
 /** \anchor MatrixBaseCommaInitRef

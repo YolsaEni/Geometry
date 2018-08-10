@@ -99,7 +99,7 @@ namespace li {
             std::cout << std::endl;
     }
 
-    double Edge::length() {
+    double Edge::length() const{
         Point n = dest - org;
         return xjsqrt(n.dotProduct(n));
     }
@@ -140,6 +140,10 @@ namespace li {
         return this->toPoint().angle(e.toPoint());
     }
 
+    double Edge::angleClockwise() {
+        return this->toPoint().angleClockwise();
+    }
+
     double Edge::angleClockwise(Edge &e) {
         return this->toPoint().angleClockwise(e.toPoint());
     }
@@ -150,6 +154,12 @@ namespace li {
 
     Point3D Edge::toLine(){
         return Point3D(dest.y-org.y, org.x-dest.x, dest.crossProduct(org));
+    }
+
+    Edge &Edge::scaleIndependent(double sx, double sy){
+        org.scaleIndependent(sx, sy);
+        dest.scaleIndependent(sx, sy);
+        return *this;
     }
 }
 

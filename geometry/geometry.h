@@ -9,3 +9,5 @@
 #include "includes/Point3D.h"
 #include "includes/Triangle3D.h"
 #include "includes/Edge3D.h"
+
+#include "includes/Ellipse.h"

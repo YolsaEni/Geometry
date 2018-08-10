@@ -10,8 +10,22 @@ namespace li {
         return Point(x + p.x, y + p.y);
     }
 
-    Point Point::operator-(const Point &p) {
+    Point Point::operator-(const Point &p) const {
         return Point(x - p.x, y - p.y);
+    }
+
+    Point &Point::scale_x(double sx) {
+        x *= sx;
+        return *this;
+    }
+
+    Point &Point::scale_y(double sy) {
+        y *= sy;
+        return *this;
+    }
+
+    Point &Point::scaleIndependent(double sx, double sy){
+        return scale_x(sx).scale_y(sy);
     }
 
     Point operator*(double s, const Point &p) {

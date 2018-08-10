@@ -104,7 +104,7 @@ namespace li {
         return _v = v;
     }
 
-    Vertex *Polygon::insert(Point &p) {
+    Vertex *Polygon::insert(const Point &p) {
         if (_size++ == 0)
             _v = new Vertex(p);
         else
@@ -125,7 +125,11 @@ namespace li {
     }
 
     void Polygon::log(int matrixForm, int useEndl) {
+        if (isEmpty())return;
+        std::cout << std::endl << "{" << std::endl;
         for (int i = 0; i < size(); i++) {
+            if (!matrixForm)
+                std::cout << "\t";
             advance(li::CLOCKWISE);
             if (matrixForm) {
                 v()->log(matrixForm, 1);
@@ -133,6 +137,7 @@ namespace li {
                 v()->log();
             }
         }
+        std::cout << std::endl << "}" << std::endl;
 
         if (useEndl)
             std::cout << std::endl;
@@ -193,6 +198,15 @@ namespace li {
         }
         return xjabs(sum / 2);
     }
+
+    Polygon &Polygon::scaleIndependent(double sx, double sy) {
+        for (int i = 0; i < size(); i++) {
+            advance(li::CLOCKWISE);
+            v()->scaleIndependent(sx, sy);
+        }
+        return *this;
+    }
+
     ////////////////////////////////
 
     WXJ_BOOL pointInConvexPolygon(Point &s, Polygon &p) {
@@ -240,6 +254,13 @@ namespace li {
 
     int rightToLeftCmp(Point *a, Point *b) {
         return leftToRightCmp(b, a);
+    }
+
+    Polygon convert(const Edge &edge) {
+        Polygon p;
+        p.insert(edge.dest);
+        p.insert(edge.org);
+        return p;
     }
 }
 

@@ -60,7 +60,7 @@ semi-infinite line starting at the origin and passing through the destination.
 
         void log(int useEndl = 0);
 
-        double length();
+        double length() const;
 
         // to point
         Point toPoint();
@@ -85,6 +85,9 @@ semi-infinite line starting at the origin and passing through the destination.
         // angle: [0, PI], normal vector angle in vector space
         double angle(Edge &e);
 
+        // angle: [0, 2*PI). angle from this edge to positive x axis in clockwise
+        double angleClockwise();
+
         // angle: [0, 2*PI). angle from this edge to e in clockwise
         double angleClockwise(Edge &e);
 
@@ -93,6 +96,9 @@ semi-infinite line starting at the origin and passing through the destination.
 
         //transform to (a, b, c) of line ax + by + c = 0;
         Point3D toLine();
+
+        // scale x, y independently.
+        Edge &scaleIndependent(double sx, double sy);
     };
 
     // convert y = kx+b to Edge.

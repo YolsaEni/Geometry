@@ -53,7 +53,7 @@ namespace li {
         Vertex *setV(Vertex *);
 
         //Member function insert inserts a new vertex after the current vertex and then moves the window over the new vertex.
-        Vertex *insert(Point &);
+        Vertex *insert(const Point &);
 
         //Member function remove removes the current vertex. The window is moved over the predecessor, or is undefined if the polygon is now empty.
         void remove(void);
@@ -74,6 +74,9 @@ namespace li {
 
         //area of this polygon. The polygon can be convex or concave.
         double area();
+
+        // scale x, y independently.
+        Polygon & scaleIndependent(double sx, double sy);
     };
 
     /////////////////////
@@ -89,4 +92,8 @@ namespace li {
     int leftToRightCmp(Point *a, Point *b);
 
     int rightToLeftCmp(Point *a, Point *b);
+
+    Polygon convert(const Edge &edge);
+
+    int scale(Polygon &p, double sx, double sy);
 }

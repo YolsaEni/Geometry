@@ -1,4 +1,4 @@
-set (module_name vision_geometry)
+set (module_name asst_geometry)
 message(STATUS "${module_name}")
 message(STATUS "${CMAKE_CURRENT_SOURCE_DIR}: ${OpenCV_LIBS}")
 

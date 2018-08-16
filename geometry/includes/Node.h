@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "geometry_inner.h"
+#include "geometry_inner.h"
 
 namespace li {
     class Node {
